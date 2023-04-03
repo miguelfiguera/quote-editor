@@ -27,14 +27,17 @@ class QuotesController < ApplicationController
     end
 
     def edit
+      @quote=Quote.find(params[:id])
     end
   
     def update
+      @quote=Quote.find(params[:id])
+
       if @quote.update(quote_params)
         redirect_to quotes_path, notice: "Quote was successfully updated."
       else
         render :edit, status: :unprocessable_entity
-    end
+      end
     end
   
     def destroy
